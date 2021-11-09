@@ -3,16 +3,15 @@ package com.bitblaster.managers;
 import java.util.PriorityQueue;
 
 import com.bitblaster.entity.Entity;
-import com.bitblaster.utils.EntityList;
+import com.bitblaster.utils.EntityLists;
 
 public class CollisionManager {
 
-	private EntityList entityList;
 	private PriorityQueue<Entity> nearPlayerEntities;
 	private static CollisionManager INSTANCE;
 	
 	public CollisionManager() {
-		entityList = new EntityList();
+
 	}
 	
 	public static synchronized CollisionManager getInstance() {

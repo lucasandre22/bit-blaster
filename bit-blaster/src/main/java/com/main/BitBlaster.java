@@ -6,14 +6,18 @@ import lombok.Getter;
 
 @Getter
 public class BitBlaster {
-	
-	public static int deltaTime;
-	public static Player player;
+	Window gameWindow;
+	private static int deltaTime;
+	private static Player player;
 	
 	public BitBlaster() {
-		player = new Player();
+		//player = new Player();
 		initEntities();
 		initPhase();
+		gameWindow = new Window();
+		//this.player = new Player();
+		gameWindow.updateWindowComponents();
+		
 	}
 
 	public static void main(String[] args) {

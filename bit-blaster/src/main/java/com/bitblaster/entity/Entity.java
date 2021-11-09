@@ -1,5 +1,8 @@
 package com.bitblaster.entity;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import com.bitblaster.texture.Texture;
 import com.bitblaster.utils.Vector2D;
 
@@ -7,10 +10,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public abstract class Entity implements EntityInterface {
-	private Texture texture;
-	private Vector2D<Integer> size;
-	private Vector2D<Integer> position;
-	private Vector2D<Double> velocity;
+public abstract class Entity {
+	protected Texture texture;
+	protected Vector2D<Integer> size;
+	protected Vector2D<Integer> position;
+	protected Vector2D<Double> velocity;
+	
+	
+	public abstract void draw();
+	public abstract void update();
+	public abstract void incrementPosition(double x, double y);
+	public abstract void paint(Graphics2D graphic);
 
 }
