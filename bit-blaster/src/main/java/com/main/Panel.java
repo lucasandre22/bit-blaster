@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import com.bitblaster.entity.Entity;
+import com.bitblaster.managers.InputManager;
 import com.bitblaster.utils.EntityLists;
 
 public class Panel extends JPanel {
@@ -19,6 +20,7 @@ public class Panel extends JPanel {
 	public Panel() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		EntityLists.getInstance().addPlayer(0, 0, 100, 100);
+		this.addKeyListener(new InputManager());
 	}
 	
 	public void paint(Entity entity) {

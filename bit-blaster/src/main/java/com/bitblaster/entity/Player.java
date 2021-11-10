@@ -9,13 +9,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class Player extends Entity {
-	PlayerSpaceShip spaceShip;
+public class Player extends PlayerSpaceShip {
+	//PlayerSpaceShip spaceShip;
 
 	public Player(int x, int y, int height, int width, String imagePath) {
-		spaceShip = new PlayerSpaceShip();
-		spaceShip.setPosition(new Vector2D<Integer>(x, y));
-		spaceShip.setSize(new Vector2D<Integer>(height, width));
+		setPosition(new Vector2D<Integer>(x, y));
+		setSize(new Vector2D<Integer>(height, width));
 		texture = new Texture(imagePath);
 	}
 	
@@ -34,7 +33,16 @@ public class Player extends Entity {
 
 	@Override
 	public void paint(Graphics2D graphic) {
-		graphic.drawImage(spaceShip.getTexture().getImage(), spaceShip.getPosition().first,
-				spaceShip.getPosition().second, spaceShip.getSize().first, spaceShip.getSize().second, null);
+		graphic.drawImage(getTexture().getImage(), getPosition().first,
+				getPosition().second, getSize().first, getSize().second, null);
+	}
+
+	@Override
+	public void move(int direction) {
+		
+	}
+	
+	public void moveRotatinalDirection(int direction) {
+		orientation += rotationalVelocity * direction;
 	}
 }

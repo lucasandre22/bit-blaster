@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
 
+import com.bitblaster.managers.InputManager;
+
 public class Window extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -19,9 +21,10 @@ public class Window extends JFrame {
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+		this.addKeyListener(new InputManager());
 	}
 	
-	void updateWindowComponents() {
+	public void updateWindowComponents() {
 		while(true)
 		repaint();
 	}

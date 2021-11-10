@@ -20,7 +20,7 @@ public class Texture {
 			image = ImageIO.read(new File(System.getProperty("user.dir") + File.separator + imagePath));
 			
 		} catch(IOException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	

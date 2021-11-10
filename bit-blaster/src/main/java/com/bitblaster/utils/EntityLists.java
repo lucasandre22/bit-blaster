@@ -34,4 +34,8 @@ public class EntityLists {
 	public void addPlayer(int x, int y, int height, int width) {
 		currentlyEntities.add(new Player(x, y, height, width, "SpaceShip.jpeg"));
 	}
+	
+	public void add(Entity e) {
+		currentlyEntities.add(e);
+	}
 }
