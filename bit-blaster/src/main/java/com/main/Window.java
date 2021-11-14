@@ -25,7 +25,6 @@ public class Window extends JFrame {
 	}
 	
 	public void updateWindowComponents() {
-		while(true)
 		repaint();
 	}
 }

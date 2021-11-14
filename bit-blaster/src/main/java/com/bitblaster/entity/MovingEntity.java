@@ -6,5 +6,9 @@ public abstract class MovingEntity extends Entity {
 
 	protected Vector2D<Double> velocity;
 	
+	public MovingEntity(Vector2D<Integer> position, Vector2D<Integer> size, String texturePath) {
+		super(position, size, texturePath);
+	}
+	
 	public abstract void move(int direction);
 }

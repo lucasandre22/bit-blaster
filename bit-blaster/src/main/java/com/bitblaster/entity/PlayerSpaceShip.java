@@ -6,6 +6,8 @@ import lombok.Getter;
 
 @Getter
 public abstract class PlayerSpaceShip extends SpaceShip {
-	protected double rotationalVelocity;
-	protected double orientation;
+
+	public PlayerSpaceShip(Vector2D<Integer> position, Vector2D<Integer> size, String texturePath) {
+		super(position, size, texturePath);
+	}
 }

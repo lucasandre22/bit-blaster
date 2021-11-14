@@ -13,4 +13,9 @@ public class Vector2D<T> {
 		this.first = first;
 		this.second = second;
 	}
+
+	public void set(T first, T second) {
+		this.first = first;
+		this.second = second;
+	}
 }

@@ -22,17 +22,13 @@ public class EntityLists {
 	
 	public static synchronized EntityLists getInstance() {
 		if(INSTANCE == null) {
-			return new EntityLists();
+			INSTANCE = new EntityLists();
 		}
 		return INSTANCE;
 	}
 	
 	public ArrayList<Entity> getCurrentlyEntities() {
 		return this.currentlyEntities;
-	}
-
-	public void addPlayer(int x, int y, int height, int width) {
-		currentlyEntities.add(new Player(x, y, height, width, "SpaceShip.jpeg"));
 	}
 	
 	public void add(Entity e) {

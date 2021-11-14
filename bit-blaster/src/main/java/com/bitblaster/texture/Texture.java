@@ -12,20 +12,20 @@ import lombok.Getter;
 
 @Getter
 public class Texture {
-	//private HashMap<String, Image> textureImages;
-	Image image;
+	private Image image;
+	private String imagePath;
 	
 	public Texture(String imagePath) {
 		try {
-			image = ImageIO.read(new File(System.getProperty("user.dir") + File.separator + imagePath));
-			
+			image = ImageIO.read(new File(imagePath));
 		} catch(IOException e) {
+			System.out.println("Unable to load image on " + imagePath);
 			e.printStackTrace();
 		}
+		this.imagePath = imagePath;
 	}
-	
-	/*public Image getTexture(String name) {
-		return textureImages.get(name);
-	}*/
 
+	public String getPath() {
+		return imagePath;
+	}
 }

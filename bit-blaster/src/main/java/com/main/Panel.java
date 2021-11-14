@@ -19,7 +19,6 @@ public class Panel extends JPanel {
 
 	public Panel() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		EntityLists.getInstance().addPlayer(0, 0, 100, 100);
 		this.addKeyListener(new InputManager());
 	}
 	
@@ -35,7 +34,7 @@ public class Panel extends JPanel {
 			entity.paint(g2d);
 		}
 
-        g2d.dispose();
+        //g2d.dispose();
 	}
 
 }

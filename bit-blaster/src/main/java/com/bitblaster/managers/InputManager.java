@@ -16,14 +16,15 @@ public class InputManager extends KeyAdapter {
 			this.code = code;
 		}
 	}
-	
+
+	@Override
 	public void keyPressed(KeyEvent e) {
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_LEFT :
-				BitBlaster.getInstance().keyPressed(e.getKeyCode());
+				BitBlaster.getInstance().getPlayer().keyPressed(-1);
 				break;
 			case KeyEvent.VK_RIGHT:
-				BitBlaster.getInstance().keyPressed(e.getKeyCode());
+				BitBlaster.getInstance().getPlayer().keyPressed(1);
 				break;
 			default :
 				break;

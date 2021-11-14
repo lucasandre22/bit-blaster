@@ -10,6 +10,6 @@ public class EntityFactory {
 	}
 
 	public static Enemy createEnemy(int x, int y, int height, int width, String imagePath) {
-		return new Enemy(new Vector2D<Integer>(x,y), new Vector2D<Integer>(height, width), imagePath));
+		return new Enemy(new Vector2D<Integer>(x,y), new Vector2D<Integer>(height, width), imagePath);
 	}
 }

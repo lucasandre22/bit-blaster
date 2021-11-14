@@ -1,9 +1,15 @@
 package com.main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.math.BigInteger;
+
+import javax.swing.Timer;
 
 import com.bitblaster.entity.Player;
 import com.bitblaster.managers.InputManager;
+import com.bitblaster.utils.EntityFactory;
 import com.bitblaster.utils.EntityLists;
 import com.bitblaster.utils.GameKey;
 
@@ -12,23 +18,22 @@ import lombok.Getter;
 @Getter
 public class BitBlaster {
 	private Window gameWindow;
-	private static int deltaTime;
+	private static int deltaTime = 0;
 	private Player player;
 	private boolean isRunnning = false;
+	private int frames = 0;
 	
 	private static BitBlaster INSTANCE;
 	
 	public BitBlaster() {
-		//player = new Player();
 		initEntities();
 		initPhase();
 		gameWindow = new Window();
-		this.player = new Player(0, 0, 0, 0, null);
 	}
 	
 	public static synchronized BitBlaster getInstance() {
 		if(INSTANCE == null) {
-			return new BitBlaster();
+			INSTANCE = new BitBlaster();
 		}
 		return INSTANCE;
 	}
@@ -38,16 +43,18 @@ public class BitBlaster {
 	}
 	
 	public void run() {
-		new Thread(new Runnable() {
+		/*new Thread(new Runnable() {
 			@Override
 			public void run() {
 				BitBlaster.this.gameWindow.updateWindowComponents();
 			}
-		}).start();
+		}).start();*/
+		mainLoop();
 	}
 	
 	public void initEntities() {
-		
+		this.player = EntityFactory.createPlayer(Window.WIDTH/2, Window.HEIGHT - Window.HEIGHT/3, 100, 100, "player.jpeg");
+		EntityLists.getInstance().add(player);
 	}
 
 	public void initPhase() {
@@ -57,12 +64,25 @@ public class BitBlaster {
 	public void mainLoop() {
 		long lastTime = System.nanoTime();
 		long currentTime;
-		int ns = 100;
+		int ns = 1000000;
+		isRunnning = true;
+		Timer timer = new Timer(1000, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Frames:" + frames);
+				frames = 0;
+			}
+			
+		});
+		timer.start();
 		while(isRunnning) {
 			currentTime = System.nanoTime();
 			deltaTime += (currentTime - lastTime) / ns;
 			if(deltaTime >= 1) {
 				deltaTime--;
+				BitBlaster.this.gameWindow.updateWindowComponents();
+				lastTime = currentTime;
+				frames++;
 			}
 		}
 	}
