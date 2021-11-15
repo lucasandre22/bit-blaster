@@ -1,6 +1,8 @@
 package com.bitblaster.entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 
 import com.bitblaster.texture.Texture;
 import com.bitblaster.utils.Vector2D;
@@ -11,8 +13,9 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Player extends SpaceShip {
-	protected double rotationalVelocity = 1;
+	protected double rotationalVelocity = 5;
 	protected double orientation;
+	protected double angle = 0.0f;
 
 	public Player(Vector2D<Integer> position, Vector2D<Integer> size, String texturePath) {
 		super(position, size, texturePath);
@@ -31,8 +34,12 @@ public class Player extends SpaceShip {
 	@Override
 	public void paint(Graphics2D graphic) {
 		update();
+		AffineTransform old = graphic.getTransform();
+		graphic.rotate(Math.toRadians(angle), getPosition().first.intValue()+getSize().first/2, getPosition().second.intValue()+getSize().second/2);
+		
 		graphic.drawImage(getImage(), getPosition().first.intValue(),
 				getPosition().second.intValue(), getSize().first, getSize().second, null);
+		graphic.setTransform(old);
 	}
 
 	@Override
@@ -43,10 +50,14 @@ public class Player extends SpaceShip {
 	public void moveRotatinalDirection(int direction) {
 		int a = this.position.first;
 		int b = this.position.second;
+		double angleInRadians = Math.toRadians(angle);
 		a += rotationalVelocity * direction;
 		b += rotationalVelocity * direction;
+		
+		a += Math.cos(angleInRadians);
+		b += Math.sin(angleInRadians);
 		this.setPosition(a, b);
-		System.out.println("moving: " + orientation);
+		angle += direction * 5;
 	}
 
 	public void keyPressed(int direction) {
