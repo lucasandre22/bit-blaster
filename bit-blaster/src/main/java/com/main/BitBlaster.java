@@ -18,7 +18,7 @@ import lombok.Getter;
 @Getter
 public class BitBlaster {
 	private Window gameWindow;
-	private static int deltaTime = 0;
+	public static double deltaTime = 0;
 	private Player player;
 	private boolean isRunnning = false;
 	private int frames = 0;

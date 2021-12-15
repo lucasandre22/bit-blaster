@@ -1,5 +1,6 @@
 package com.main;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,6 +21,7 @@ public class Panel extends JPanel {
 	public Panel() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.addKeyListener(new InputManager());
+		this.setBackground(Color.BLACK);
 	}
 	
 	public void paint(Entity entity) {
